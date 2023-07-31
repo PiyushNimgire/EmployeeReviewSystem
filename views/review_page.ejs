@@ -1,0 +1,39 @@
+<h1><%= title %></h1>
+
+<a href="/employees">Employee List</a>
+
+<h4>Add Performance Review</h4>
+<form action="/employees/review/<%= employee.id %>" method="post">
+    <textarea name="description" cols="30" rows="10" placeholder="Enter performance review" required></textarea>
+    <input type="text" name="user" value=<%= employee.id %> hidden>
+    <select name="assignedTo" multiple required>
+        <% for(let i=0; i<employees.length; i++){ %>
+            <option value="<%= employees[i].id %>"><%= employees[i].name %></option>
+        <% } %>
+    </select>
+    <input type="submit" value="submit">
+</form>
+
+<h4>Update performance Review</h4>
+<% if(review != null){ %>
+    <form action="/employees/review/<%= review.id %>/update" method="post">
+        <textarea name="description" cols="30" rows="10" required><%= review.description %></textarea>
+        <input type="text" name="user" value=<%= employee.id %> hidden>
+        <select name="assignedTo" required>
+            <% for(let i=0; i<employees.length; i++){ %>
+                <option value="<%= employees[i].id %>"><%= employees[i].name %></option>
+            <% } %>
+        </select>
+        <input type="submit" value="submit">
+    </form>
+<% } %>
+
+<h4>Performance review of <%= employee.name %></h4>
+<% if(review != null){ %>
+    <p><%= review.description %></p>
+<% } %>
+
+<h4>Comment</h4>
+<% if(feedback != null){ %>
+    <p><%= feedback.comment %></p>
+<% } %>

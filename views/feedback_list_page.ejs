@@ -1,0 +1,12 @@
+<p><%= title %></p>
+<a href="/logout">Log out</a>
+<ol>
+    <% for(let i=0; i<reviews.length; i++){ %>
+        <li>
+            <p><%= reviews[i].description %></p>
+            <p><%= reviews[i].user %></p>
+            <a href="/feedback/<%= reviews[i].id %>">Add feedback</a>
+        </li>
+    <% } %>
+</ol>
+

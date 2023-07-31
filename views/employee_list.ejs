@@ -1,0 +1,25 @@
+<h1><%= title %></h1>
+<h4>User: <%= user.name %></h4>
+<a href="/logout">Log out</a>
+<a href="/employees/register">Add Employee</a>
+<ol>
+    <%_ for (let i = 0; i < employee_list.length; i++) { _%>
+        
+        <% if(employee_list[i].role == 'admin'){ %>
+            <% continue %>
+        <% } %>
+        <li>
+            <ul>
+                <li><p>Name: <%= employee_list[i].name %></p></li>
+                <li><p>Email: <%= employee_list[i].email %></p></li>
+                <li><p>Role: <%= employee_list[i].role %></p></li>
+                <li><a href="/employees/update/<%= employee_list[i].id %>">Update</a></li>
+                <li><a href="/employees/review/<%= employee_list[i].id %>">Review</a></li>
+                <li><a href="/employees/remove/<%= employee_list[i].id %>">Remove</a></li>
+            </ul>
+        </li>
+        <br>
+    <%_ } %>
+</ol>
+
+

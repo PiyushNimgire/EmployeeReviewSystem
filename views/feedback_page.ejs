@@ -1,0 +1,10 @@
+<%= title %>
+<p><%= review.description %></p>
+<p><%= employee.name %></p>
+<!-- <p><%= feedback %></p> -->
+<form action="/feedback/<%= review.id %>" method="post">
+    <textarea name="comment" cols="30" rows="10"></textarea>
+    <input type="text" name="feedbackBy" hidden value="<%= user.id %>">
+    <input type="text" name="performanceReviewId" hidden value="<%= review.id %>">
+    <input type="submit" value="Submit">
+</form>
